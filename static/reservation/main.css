@@ -1,0 +1,540 @@
+﻿*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100vw;
+    background: rgb(246,246,246);
+}
+/* signin*/
+body.sign_bg{
+    background:  rgba(218, 33, 39);
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 150px;
+}
+body.sign_bg>header>#signlogo{
+    margin-bottom: 20px;
+}
+body.sign_bg>header>#signlogo a{
+    text-decoration: none;
+    color: white;
+}
+body.sign_bg>main{
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+body.sign_bg>main>#sign_inputs{
+    position: relative;
+}
+body.sign_bg>main>#sign_inputs input{
+    display: block;
+    width: 290px;
+    line-height: 1.5;
+    padding: 5px 20px;
+    margin: .8px;
+    border: none;
+    border-radius: 2px;
+}
+body.sign_bg>main>#sign_inputs .sign_btn{
+    display: block;
+    line-height: 1.5;
+    padding: 5px 20px;
+    margin: .8px;
+    width: 290px;
+    margin-top: 10px;
+    border: none;
+    border-radius: .5px;
+    color: white;
+    background: rgb(79, 81, 81);
+    cursor: pointer;
+}
+body.sign_bg>main>#sign_inputs .sign_btn:focus{
+    outline: none;
+}
+body.sign_bg>main>#sign_inputs #auto_signin{
+    width: 155px;
+    bottom: -8.2px;
+}
+body.sign_bg>main>#sign_inputs #auto_signin, label{
+    margin: 8px 0;
+    position: absolute;
+    right: 0;
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+}
+body.sign_bg>main>#sign_inputs input:focus{
+    outline: none;
+}
+/* signup */
+body.sign_bg>main>#sign_inputs #major{
+    width: 290px;
+    padding: 7px;
+    margin: .8px;
+    border: none;
+    border-radius: 2px;
+    background: white;
+}
+body.sign_bg>main>#sign_inputs #major:focus{
+    outline: none;
+}
+body.sign_bg>main .signup{
+    padding: 0;
+    margin-top: 7px;
+}
+/* header */
+header>#toplogo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 30px;
+}
+header>#toplogo>img{
+    width: 111.51px;
+    height: 20px;
+    margin: 5px 0 0;
+}
+header>.logo{
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(218,33,39);
+    color: rgb(255,255,255);
+}
+header>.logo>img{
+    width: 23px;
+    position: absolute;
+    left: 3vw;
+    cursor: pointer;
+}
+header>.logo>h1{
+    font-family: 나눔고딕;
+    font-size: 1.5em;
+    font-weight: normal;
+}
+header>.logo>h1>a{
+    text-decoration: none;
+    color: rgb(255,255,255);
+}
+header>.sidenav {
+    height: 100vh;
+    width: 0;
+    box-sizing: border-box;
+    background: rgba(255,255,255);
+    box-shadow: 0 5px 8px rgba(79,81,81,.7);
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+header>.sidenav a{
+    text-decoration: none;
+    font-size: 20px;
+    color: rgba(79, 81, 81, .7);
+    display: block;
+    transition: 0.3s;
+}
+header>.sidenav a:hover {
+    font-weight: bold;
+    color: rgb(55, 56, 56);
+}
+header>.sidenav ul{
+    list-style: none;
+    padding-left: 25px;
+}
+header>.sidenav li{
+    line-height: 2;
+}
+header>.sidenav .navFirst{
+    font-size: 15px;
+    line-height: 1.3;
+}
+header>.sidenav .navCloseBtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: rgba(79, 81, 81);
+}
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+/* main */
+main{
+    width: 85vw;
+    margin: 20px auto;
+}
+main>#chart{
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgb(255,255,255);
+    border-radius: 5px;
+}
+main>#chart>.chart_div{
+    width: 80px;
+}
+main>#mypage #btn_mypage{
+    width: 100%;
+    height: 53px;
+    margin: 10px 0;
+    background: rgba(79,81,81,0.6);
+    border: none;
+    border-radius: 2px;
+}
+main>#mypage #btn_mypage:hover{
+    background: rgba(79,81,81,0.8);
+    cursor: pointer;
+}
+main>#mypage>a>#btn_mypage{
+    text-decoration: none;
+    color: rgba(255,255,255);
+    font-size: 18px;
+}
+main>#main_post{
+    display: flex;
+    margin: 10px auto;
+}
+main>#main_post>.main_post_item{
+    flex: .8;
+    margin: 0 1px;
+    padding: 3px;
+    background-color: rgb(255,255,255);
+}
+main>#main_post>.main_post_item>h4{
+    margin-bottom: 8px;
+    padding: 5px 0;
+    background: rgba(246,246,246);
+    text-align: center;
+}
+main>#main_post>.main_post_item>h4 a{
+    text-decoration: none;
+    color: black;
+}
+main>#main_post>.main_post_item>ul{
+    list-style: none;
+    padding-left: 15px;
+}
+main>#main_post>.main_post_item li{
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(246,246,246);
+}
+main>#main_post>.main_post_item li a{
+    text-decoration: none;
+    color: black;
+}
+main>#main_post>.main_post_item li:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media (min-width: 700px){
+    main{
+        height: 68vh;
+    }
+    footer{
+        display: fixed;
+    }
+}
+@media (max-width: 700px){
+    main>#main_post{
+        display: block;
+    }
+    main>#main_post>.main_post_item{
+        margin-top: 10px;
+    }
+}
+/* reserve */
+main>#reserve{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 50px;
+}
+main>#reserve>.buttons{
+    display: block;
+    margin-bottom: 20px;
+}
+main>#reserve>.buttons button{
+    width: 50px;
+    height: 28px;
+    background: rgba(255, 205, 86);
+    color: white;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+main>#reserve>.buttons button:nth-child(2){
+    background: rgba(255, 99, 132);
+}
+main>#reserve>.buttons button:nth-child(3){
+    background: rgba(54, 162, 235);
+}
+main>#reserve>.buttons button:focus{
+    outline: none;
+}
+main>#reserve p{
+    margin-bottom: 3px;
+}
+main>#reserve p>select{
+    width: 100px;
+    height: 30px;
+}
+main>#reserve p>select:focus{
+    outline: none;
+}
+/* reserve_all */
+main>#reserve_all{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 20px;
+}
+main>#reserve_all>h3{
+    margin-bottom: 10px;
+}
+main>#reserve_all>table{
+    border: 1px solid rgb(0, 0, 0);
+    text-align: center;
+}
+main>#reserve_all th{
+    border-bottom: 1px solid rgb(0, 0, 0);
+    border-right: 1px solid rgb(0, 0, 0);
+    height: 30px;
+    background: rgba(79, 81, 81, .8);
+    color: white;
+}
+main>#reserve_all td{
+    width: 80px;
+    height: 20px;
+    border-bottom: 1px dotted rgb(0, 0, 0);
+    border-right: 1px solid rgb(0, 0, 0);
+    font-size: 14px;
+}
+main>#reserve_all td:nth-child(1){
+    width: 120px;
+    background: rgba(79, 81, 81, .6);
+    color: white;
+}
+main>#reserve_all td:nth-child(6), main>#reserve_all th:nth-child(6){
+    border-right: none;
+}
+/* mypage */
+main>#reserved_mypage{
+    padding-top: 10px;
+}
+main>#reserved_mypage>h3{
+    margin: 15px 0;
+    text-align: center;
+    color: rgba(79,81,81);
+}
+main>#reserved_mypage>.reserved_card{
+    width: 300px;
+    height: 120px;
+    margin: 20px auto;
+    border: 1px solid rgba(79,81,81,0.6);
+    border-radius: 3px;
+    background: white;
+}
+main>#reserved_mypage>.reserved_card>table{
+    width: 100%;
+    height: 100%;
+    color: rgba(79,81,81);
+}
+main>#reserved_mypage>.reserved_card th{
+    /* width: 45%; */
+    text-align: left;
+    padding-left: 10px;
+    border-bottom: 1px solid rgba(79,81,81,.5);
+}
+main>#reserved_mypage>.reserved_card td{
+    /* width: 50%; */
+    border-bottom: 1px solid rgba(79,81,81,.5);
+    
+}
+main>#reserved_mypage>.btn_return{
+    width: 70px;
+    height: 35px;
+    position: absolute;
+    bottom: 15vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(218,33,39);
+    font-size: 1em;
+    color: rgb(225,225,225);
+    border: none;
+    border-radius: 3px;
+}
+main>#reserved_mypage>.btn_return:hover{
+    cursor: pointer;
+}
+/* main > post */
+main>.post_wrap{
+    display: flex;
+    width: 75vw;
+    margin: 40px auto;
+}
+main>.post_wrap>.post{
+    width: 250px;
+    flex: 1;
+    margin: 30px 10px;
+    padding: 20px 25px;
+    box-sizing: border-box;
+    border: 1px solid rgba(79,81,81);
+    border-radius: 5px;
+    position: relative;
+}
+main>.post_wrap>.post>span{
+    position: absolute;
+    top: -17px;
+    left: 15px;
+    background: rgb(246,246,246);
+    font-size: 20px;
+    padding: 6px;
+}
+main>.post_wrap>.post>ul{
+    line-height: 2;
+    list-style-type: square;
+    padding: 10px;
+}
+main>.post_wrap>.post>ul a{
+    text-decoration: none;
+    color: black;
+}
+main>.post_wrap>.post li:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+@media (max-width: 700px){
+    main>.post_wrap{
+        display: block;
+    }
+    main>.post_wrap>.post{
+        width: 70vw;
+        margin-top: 10px;
+        margin: 30px auto;
+    }
+}
+/* post */
+.post_container{
+    margin-top: 50px;
+}
+.post_container .post{
+    margin-top: 20px;
+    width: 100%;
+    border-top: 2px solid rgba(218,33,39);
+}
+.post_container .post .post_items{
+    display: flex;
+    align-items: center;
+    height: 8vh;
+    position: relative;
+    border-bottom: 1px solid #c5c5c5;
+    color: rgba(79,81,81);
+}
+.post_container .post .post_items:hover{
+    background: #e0e0e0;
+}
+.post_container .post .post_items h3 a{
+    text-decoration: none;
+    color: rgba(79,81,81);
+    font-size: 17px;
+    font-weight: normal;
+}
+.post_items h3:hover{
+    text-decoration: underline;
+}
+.post_container .post .post_items span{
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    font-size: 14px;
+}
+@media (max-width: 700px){
+    .post_container .post{
+        margin-top: 30px;
+    }
+}
+/* post Item */
+.post_container .post_title{
+    padding: 15px 5px;
+    height: 8vh;
+    position: relative;
+}
+.post_container .post_title span{
+    position: absolute;
+    bottom: 8px;
+    right: 3px;
+}
+.post_container .post_content{
+    padding: 20px 10px 50px;
+    border-top: 1px solid rgb(79, 81, 81);
+    border-bottom: 1.5px solid rgb(79, 81, 81);
+}
+.post_container .post_btn{
+    margin: 20px;
+    float: right;
+    width: 60px;
+    height: 35px;
+    border: none;
+    border-radius: 3px;
+    background: rgba(218,33,39);
+    font-size: 1rem;
+    color: white;
+}
+.post_container .post_btn:hover{
+    cursor: pointer;
+}
+
+/* footer */
+footer{
+    width: 100vw;
+    height: 15vh;
+    padding: 12px 8vw;
+    box-sizing: border-box;
+    position: relative;
+    bottom: 0;
+    background: rgba(79, 81, 81, .8);
+    color: rgba(255, 255, 255, .8);
+}
+footer>.contact{
+    position: absolute;
+    right: 10vw;
+}
+footer>.contact>a{
+    text-decoration: none;
+}
+footer>.contact>a img{
+    width: 30px;
+    height: 30px;
+}
+footer>.contact>a .kakao{
+    margin-right: 10px;
+}
+footer>p{
+    font-size: 14px;
+    line-height: 1.2;
+}
+footer .copyright{
+    font-size: 11px;
+    color: rgba(255, 255, 255, .5);
+}

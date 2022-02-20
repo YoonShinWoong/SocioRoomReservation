@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>사회과학대학</title>
+    <link rel=icon href="{% static 'reservation/titlelogo.png' %}" sizes="16x16" type="image/png">
+    <link rel="stylesheet" href="{% static 'reservation/main.css'%}">
+</head>
+<body>
+    <header>
+        <div id="toplogo">
+            <img src="{% static 'reservation/knu_logo.png' %}" alt="경북대학교">
+        </div>
+        <div class="logo">
+            <img src="{% static 'reservation/navBtn.svg' %}" id="nav_btn" onclick="openNav()" alt="메뉴버튼">
+            <h1><a href="{% url 'home' %}">사회과학대학</a></h1>
+        </div>
+        <nav id="mySidenav" class="sidenav">
+            <ul>
+                <a href="javascript:void(0)" class="navCloseBtn" onclick="closeNav()">&times;</a>
+                {% if user.is_authenticated %}
+                    <a href="#"><li class="navFirst">{{user.profile.realname}}<br>{{user.username}} / {{user.profile.department}}</li></a>
+                    <a href="{% url 'myreservation' %}"><li>예약현황</li></a>
+                    <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}"><li>로그아웃</li></a>
+                    <form id="logout" method="POST" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <input type="hidden"/>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}"><li>로그인</li></a>
+                    <a href="{% url 'signup' %}"><li>회원가입</li></a>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="post_container">
+            <h2>{{category}}</h2>
+            <div id="notice" class="post">
+                {% for blog in blogs %}
+                    <div class="post_items">
+                        <h3><a href="{% url 'detail' blog.id %}">{{blog}}</a></h3>
+                        <span>{{blog.pub_date}}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        
+    </main>
+    <script src="{% static 'reservation/main.js' %}"></script>
+</body>
+</html>

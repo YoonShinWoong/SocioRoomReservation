@@ -1,0 +1,58 @@
+<header>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    </header>
+    
+    <body>
+        {% comment %} 부트스트랩을 활용하여 손쉽게 만들기 {% endcomment %}
+        <div class="container">
+            <form action="{% url 'update' reservation.id %}"> 
+                <div class="input-group mb-3" style="width:21em;">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">스터디룸</label>
+                </div>
+                <select name="room_type" value="{{reservation.room_type}}" class="custom-select" id="inputGroupSelect01">
+                    <option>스터디룸을 선택해주세요</option>
+                    {% if reservation.room_type == "1A"%}
+                        <option selected value="1A">1A</option>
+                    {% else %}
+                        <option value="1A">1A</option>
+                    {% endif %}
+                    
+                    {% if reservation.room_type == "1B" %}
+                        <option selected value="1B">1B</option>
+                    {% else %}
+                        <option value="1B">1B</option>
+                    {% endif %}
+
+                    {% if reservation.room_type == "3A" %}
+                        <option selected value="3A">3A</option>
+                    {% else %}
+                        <option value="3A">3A</option>
+                    {% endif %}
+                </select>
+                </div>
+                <div class="input-group flex-nowrap" style="width:21em;">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="addon-wrapping">예약날짜</span>
+                    </div>
+                    <input type="date" name="room_date" value="{{reservation.room_date}}" class="form-control" placeholder="연도-월-일" aria-label="Username" aria-describedby="addon-wrapping" data-date-inline-picker="true" min="{{min_date}}" max="{{max_date}}">
+                </div>
+    
+                <div class="input-group flex-nowrap" style="width:21em;">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="addon-wrapping">시작시간</span>
+                    </div>
+                    <input type="time" name="room_start_time" value="{{reservation.room_start_time}}" class="form-control" placeholder="오전 09:00" aria-label="Username" aria-describedby="addon-wrapping" data-date-inline-picker="true" min="09:00" max="20:30">
+                </div>
+    
+                <div class="input-group flex-nowrap" style="width:21em;">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="addon-wrapping">종료시간</span>
+                    </div>
+                    <input type="time" name="room_finish_time" value="{{reservation.room_finish_time}}" class="form-control" placeholder="오후 09:00" aria-label="Username" aria-describedby="addon-wrapping" data-date-inline-picker="true" min="09:30" max="21:00">
+                </div>
+    
+                <button type="submit" class="btn btn-danger">예약</button>
+            </form>
+        </div>
+    </body>

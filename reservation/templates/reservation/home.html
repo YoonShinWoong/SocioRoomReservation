@@ -1,0 +1,166 @@
+﻿{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>사회과학대학</title>
+    <link rel=icon href="{% static 'reservation/titlelogo.png' %}" sizes="16x16" type="image/png">
+    <link rel="stylesheet" href="{% static 'reservation/main.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/eab0835984.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div id="toplogo">
+            <img src="{% static 'reservation/knu_logo.png' %}" alt="경북대학교">
+        </div>
+        <div class="logo">
+            <img src="{% static 'reservation/navBtn.svg' %}" id="nav_btn" onclick="openNav()" alt="메뉴버튼">
+            <h1><a href="{% url 'home' %}">사회과학대학</a></h1>
+        </div>
+        <nav id="mySidenav" class="sidenav">
+            <ul>
+                <a href="javascript:void(0)" class="navCloseBtn" onclick="closeNav()">&times;</a>
+                {% if user.is_authenticated %}
+                    <a href="#"><li class="navFirst">{{user.profile.realname}}<br>{{user.username}} / {{user.profile.department}}</li></a>
+                    <a href="{% url 'myreservation' %}"><li>예약현황</li></a>
+                    <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}"><li>로그아웃</li></a>
+                    <form id="logout" method="POST" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <input type="hidden"/>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}"><li>로그인</li></a>
+                    <a href="{% url 'signup' %}"><li>회원가입</li></a>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="chart">
+            <div class="chart_div" onclick="goNew1A()" style="cursor:pointer;">
+                <canvas id="chart_1" width="7vw" height="7vh"></canvas>
+            </div>
+            <div class="chart_div" onclick="goNew1B()" style="cursor:pointer;">
+                <canvas id="chart_2" width="7vw" height="7vh"></canvas>
+            </div>
+            <div class="chart_div" onclick="goNew3A()" style="cursor:pointer;">
+                <canvas id="chart_3" width="7vw" height="7vh"></canvas>
+            </div>
+        </section>
+        <section id="mypage">
+            <a href="{% url 'myreservation' %}"><button id="btn_mypage">나의 예약 현황</button></a>
+        </section>
+        <section id="main_post">
+            <div class="main_notice main_post_item">
+                <h4><a href="{% url 'index' "공지사항" %}">스터디룸 공지사항</a></h4>
+                <ul>
+                    {% for notice in notices %}
+                        <li><a href="{% url 'detail' notice.id %}">{{notice}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="main_board main_post_item">
+                <h4><a href="{% url 'index' "분실물" %}">스터디룸 분실물</a></h4>
+                <ul>
+                    {% for lost in losts %}
+                    <li><a href="{% url 'detail' lost.id %}">{{lost}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <img src="{% static 'reservation/footer_logo.png' %}" alt="footer_logo" />
+        <span class="contact" style="font-size:x-large; color:inherit ;">
+                <a href="https://pf.kakao.com/_JdHwxb" target="_blank" style="color:white;"><i class="far fa-comment"></i></a>
+                <a href="https://www.instagram.com/knu_highlight/?hl=ko" target="_blank" style="color:white;"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/knussc/" target="_blank" style="color:white;"><i class="fab fa-facebook-square"></i></a>
+        </span>
+        <p>사회과학대학 Tel: 053-950-5202~4</p>
+        <p>멋쟁이 사자처럼 <span style="font-size: x-small;"><a target="_blank" style="color:white; text-decoration: none;" href="https://github.com/YoonShinWoong">윤신웅</a> <a target="_blank" style="color:white; text-decoration: none;"href="https://github.com/yeonjudkwl">홍연주</a></span></p>
+        <p class="copyright">Copyright(c) Kyungpook National University. All rights reserved.</p>
+    </footer>
+    <script src="{% static 'reservation/main.js' %}"></script>
+    <script>
+        $(function() {
+            var msg = "{{msg}}";
+            if(msg != ""){
+                alert(msg);
+            }
+        });
+
+        // New 페이지 이동
+        function goNew1A(){
+            location.href="/reservation/new/1A";
+        }
+        function goNew1B(){
+            location.href="/reservation/new/1B";
+        }
+        function goNew3A(){
+            location.href="/reservation/new/3A";
+        }
+        //chart
+        var pro_1A = {{proportion}}[0];
+        var pro_1B = {{proportion}}[1];
+        var pro_3A = {{proportion}}[2];
+        new Chart(document.getElementById("chart_1"),
+            {
+                "type":"doughnut",
+                "data":{
+                    labels: [
+                        '1A',
+                    ],
+                    "datasets":[
+                        {   
+                            "data":[pro_1A, 12],
+                            "backgroundColor":["rgba(255, 205, 86)","rgba(79, 81, 81, .3)"],
+                            "borderWidth": 0.3
+                        },
+                    ]
+                }
+            });
+        new Chart(document.getElementById("chart_2"),
+            {
+                "type":"doughnut",
+                "data":{
+                    labels: [
+                        '1B',
+                    ],
+                    "datasets":[
+                        {
+                            "data":[pro_1B, 12],
+                            "backgroundColor":["rgba(255, 99, 132)","rgba(79, 81, 81, .3)"],
+                            "borderWidth": 0.3
+                        }
+                    ]
+                }
+            });
+        new Chart(document.getElementById("chart_3"),
+            {
+                "type":"doughnut",
+                "data":{
+                    labels: [
+                        '3A',
+                    ],
+                    "datasets":[
+                        {
+                            "data":[pro_3A, 12],
+                            "backgroundColor":["rgba(54, 162, 235)","rgba(79, 81, 81, .3)"],
+                            "borderWidth": 0.3
+                        }
+                    ]
+                }
+            });
+    </script>
+</body>
+</html>
+<style>
+@media only screen and (min-height: 672px) {
+    footer{
+        position: fixed;
+    }
+}
+</style>
